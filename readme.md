@@ -89,19 +89,18 @@ Before running the application, make sure you have the following software instal
                 time TIME,
                 FOREIGN KEY (cardno) REFERENCES Card(cardno)
             );
-            -- Insert random data into the User table
 
             INSERT INTO User (accno, name, ifsc, address, phoneno, age) VALUES
                 (123456, 'John Doe', 'IFSC001', '123 Main St', '555-1234', 30),
                 (234567, 'Jane Smith', 'IFSC002', '456 Elm St', '555-5678', 25),
                 (345678, 'Alice Johnson', 'IFSC003', '789 Oak St', '555-9012', 40);
 
-            -- Insert random data into the Card table
+            
             INSERT INTO Card (cardno, accno, acctype, name_card, pin, bankname, expiredate, cvv, balance) VALUES
                 (11112222, 123456, 'Savings', 'John Doe', '1234', 'KCT Bank', '2025-12-31', 123, 1000.00),
                 (22223333, 234567, 'Checking', 'Jane Smith', '5678', 'KCT Bank', '2026-11-30', 456, 2000.00),
                 (33334444, 345678, 'Savings', 'Alice Johnson', '9012', 'KCT Bank', '2027-10-31', 789, 3000.00);
-            -- Insert random data into the Transaction table
+            
 
             INSERT INTO Transaction (cardno, transtype, amt, date, time) VALUES
                 (11112222, 'Deposit', 500.00, '2025-03-01', '10:00:00'),
