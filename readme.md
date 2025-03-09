@@ -54,7 +54,7 @@ Before running the application, make sure you have the following software instal
     - Open the MySQL command line or a MySQL client tool.
     - Run the following commands to create the database and the required tables:
 
-            ```sql
+    ```sql
             Create Database atm;
 
 
