@@ -147,8 +147,4 @@ pull request describing your changes.
 
 This project is licensed under the [MIT License](LICENSE).
 
-## Contact
-
-If you have any questions or suggestions regarding this project, feel free to contact the author at [github.com/iamevs](https://github.com/iamevs).
-
 **Happy banking!**
