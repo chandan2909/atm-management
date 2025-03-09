@@ -51,45 +51,57 @@ Before running the application, make sure you have the following software instal
 
 4.  Create a MySQL database:
 
-        - Open the MySQL command line or a MySQL client tool.
-        - Run the following commands to create the database and the required tables:
+            - Open the MySQL command line or a MySQL client tool.
+            - Run the following commands to create the database and the required tables:
 
-        ```sql
-        Create Database atm;
+            ```sql
+            Create Database atm;
 
 
-        CREATE TABLE User (
-            accno VARCHAR(255) PRIMARY KEY,
-            name VARCHAR(255),
-            ifsc VARCHAR(255),
-            address VARCHAR(255),
-            phoneno VARCHAR(255),
-            age INT
-        );
+            CREATE TABLE User (
+                accno VARCHAR(255) PRIMARY KEY,
+                name VARCHAR(255),
+                ifsc VARCHAR(255),
+                address VARCHAR(255),
+                phoneno VARCHAR(255),
+                age INT
+            );
 
-        CREATE TABLE Card (
-            cardno INT PRIMARY KEY,
-            accno VARCHAR(255),
-            acctype VARCHAR(255),
-            name_card VARCHAR(255),
-            pin VARCHAR(255),
-            bankname VARCHAR(255),
-            expiredate DATE,
-            cvv INT,
-            balance DECIMAL(10, 2),
-            FOREIGN KEY (accno) REFERENCES User(accno)
-        );
+            CREATE TABLE Card (
+                cardno INT PRIMARY KEY,
+                accno VARCHAR(255),
+                acctype VARCHAR(255),
+                name_card VARCHAR(255),
+                pin VARCHAR(255),
+                bankname VARCHAR(255),
+                expiredate DATE,
+                cvv INT,
+                balance DECIMAL(10, 2),
+                FOREIGN KEY (accno) REFERENCES User(accno)
+            );
 
-        CREATE TABLE Transaction (
-            transid INT PRIMARY KEY AUTO_INCREMENT,
-            cardno INT,
-            transtype VARCHAR(255),
-            amt DECIMAL(10, 2),
-            date DATE,
-            time TIME,
-            FOREIGN KEY (cardno) REFERENCES Card(cardno)
-        );
-        -- Insert random data into the Transaction table
+            CREATE TABLE Transaction (
+                transid INT PRIMARY KEY AUTO_INCREMENT,
+                cardno INT,
+                transtype VARCHAR(255),
+                amt DECIMAL(10, 2),
+                date DATE,
+                time TIME,
+                FOREIGN KEY (cardno) REFERENCES Card(cardno)
+            );
+            -- Insert random data into the User table
+
+        INSERT INTO User (accno, name, ifsc, address, phoneno, age) VALUES
+            (123456, 'John Doe', 'IFSC001', '123 Main St', '555-1234', 30),
+            (234567, 'Jane Smith', 'IFSC002', '456 Elm St', '555-5678', 25),
+            (345678, 'Alice Johnson', 'IFSC003', '789 Oak St', '555-9012', 40);
+
+    -- Insert random data into the Card table
+        INSERT INTO Card (cardno, accno, acctype, name_card, pin, bankname, expiredate, cvv, balance) VALUES
+            (11112222, 123456, 'Savings', 'John Doe', '1234', 'KCT Bank', '2025-12-31', 123, 1000.00),
+            (22223333, 234567, 'Checking', 'Jane Smith', '5678', 'KCT Bank', '2026-11-30', 456, 2000.00),
+            (33334444, 345678, 'Savings', 'Alice Johnson', '9012', 'KCT Bank', '2027-10-31', 789, 3000.00);
+    -- Insert random data into the Transaction table
 
         INSERT INTO Transaction (cardno, transtype, amt, date, time) VALUES
             (11112222, 'Deposit', 500.00, '2025-03-01', '10:00:00'),
