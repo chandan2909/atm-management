@@ -51,8 +51,8 @@ Before running the application, make sure you have the following software instal
 
 4.  Create a MySQL database:
 
-            - Open the MySQL command line or a MySQL client tool.
-            - Run the following commands to create the database and the required tables:
+    - Open the MySQL command line or a MySQL client tool.
+    - Run the following commands to create the database and the required tables:
 
             ```sql
             Create Database atm;
