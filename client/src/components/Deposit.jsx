@@ -4,11 +4,10 @@ import { useNavigate } from "react-router-dom";
 import bg from "../assets/bg.jpg";
 import Navbar from "./Navbar";
 
-export default function Deposit({ accno, handlebalance , Balance}) {
-
+export default function Deposit({ accno, handlebalance, Balance }) {
   const [amount, setAmount] = useState(0);
   const navigate = useNavigate();
-  const link = "http://localhost:8001/api/deposit"
+  const link = "http://localhost:8001/api/deposit";
 
   const handleDeposit = (event) => {
     if (amount <= 0) {
@@ -30,9 +29,7 @@ export default function Deposit({ accno, handlebalance , Balance}) {
       body: JSON.stringify({ amount }),
       headers: { 'Content-Type': 'application/json' }
     })
-      .then((res) => {
-        return res.json();
-      })
+      .then((res) => res.json())
       .then((data) => {
         if (data.error) {
           console.log('Deposit error:', data.error);
@@ -46,12 +43,9 @@ export default function Deposit({ accno, handlebalance , Balance}) {
       });
   };
 
-  Deposit.propTypes = {
-    accno: PropTypes.string.isRequired,
-    handlebalance: PropTypes.func.isRequired,
-    Balance: PropTypes.number.isRequired,
+  const handleHome = () => {
+    navigate("/");
   };
-
 
   return (
     <div
@@ -75,7 +69,7 @@ export default function Deposit({ accno, handlebalance , Balance}) {
           style={{
             borderRadius: "15px",
             boxShadow: "0px 0px 20px 3px rgb(136 136 136 / 29%)",
-            border: "2px dotted #D89216",
+            border: "2px dotted #6a5acd", // Change border color to shady blue
             padding: "20px",
           }}
         >
@@ -85,7 +79,7 @@ export default function Deposit({ accno, handlebalance , Balance}) {
           <h2
             className="text-2xl mb-3"
             style={{
-              color: "#D89216",
+              color: "#6a5acd",
             }}
           >
             Enter the amount
@@ -99,13 +93,45 @@ export default function Deposit({ accno, handlebalance , Balance}) {
               setAmount(event.target.value);
             }}
           />
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4s"
-            onClick={handleDeposit}
-          >Submit</button>
+          <div className="flex space-x-4">
+            <button
+              className="text-lg font-bold"
+              style={{
+                color: "#fff",
+                backgroundColor: "#6a5acd", // Shady blue color
+                border: "2px solid #6a5acd",
+                borderRadius: "25px",
+                padding: "10px 20px", // Add padding for consistency
+                margin: "0", // Remove any margin
+              }}
+              onClick={handleDeposit}
+            >
+              Submit
+            </button>
+            <button
+              className="text-lg font-bold"
+              style={{
+                color: "#6a5acd", // Shady blue color
+                border: "2px solid #6a5acd",
+                borderRadius: "25px",
+                backgroundColor: "transparent", // Ensure background is transparent
+                padding: "10px 20px", // Add padding for consistency
+                margin: "0", // Remove any margin
+              }}
+              onClick={handleHome}
+            >
+              Home
+            </button>
+          </div>
         </div>
       </div>
     </div>
   );
 }
+
+Deposit.propTypes = {
+  accno: PropTypes.string.isRequired,
+  handlebalance: PropTypes.func.isRequired,
+  Balance: PropTypes.number.isRequired,
+};
 

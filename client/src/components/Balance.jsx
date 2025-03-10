@@ -26,9 +26,9 @@ export default function Balance({ accno }) {
       });
   }, [accno]);
 
-  setTimeout(() => {
+  const handleHome = () => {
     navigate("/");
-  }, 2000);
+  };
 
   return (
     <div
@@ -52,14 +52,30 @@ export default function Balance({ accno }) {
           style={{
             borderRadius: "15px",
             boxShadow: "0px 0px 20px 3px rgb(136 136 136 / 29%)",
-            border: "2px dotted #D89216",
+            border: "2px dotted #6a5acd", // Change border color to shady blue
             padding: "20px",
           }}
         >
           <h1 className="text-3xl text-white mb-3">View your balance</h1>
-          <h1 className="text-2xl text-white mb-3" style={{ color: "#D89216" }}>
+          <h1 className="text-2xl text-white mb-3" style={{ color: "#6a5acd" }}>
             Your balance: {balance}
           </h1>
+          <div className="flex space-x-4">
+            <button
+              className="text-lg font-bold"
+              style={{
+                color: "#6a5acd", // Shady blue color
+                border: "2px solid #6a5acd",
+                borderRadius: "25px",
+                backgroundColor: "transparent", // Ensure background is transparent
+                padding: "10px 20px", // Add padding for consistency
+                margin: "0", // Remove any margin
+              }}
+              onClick={handleHome}
+            >
+              Home
+            </button>
+          </div>
         </div>
       </div>
     </div>

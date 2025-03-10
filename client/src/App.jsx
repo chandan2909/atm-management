@@ -8,7 +8,6 @@ import PinScreen from './components/PinScreen.jsx';
 import ViewTransaction from './components/ViewTransaction.jsx';
 import Withdraw from './components/Withdraw.jsx';
 
-
 const App = () => {
     const [accno, setAccno] = useState(''); // Initialize as string
     const [pass, setPass] = useState(''); // fetched from DB

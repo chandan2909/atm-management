@@ -8,7 +8,7 @@ export default function Withdraw({ accno }) {
   const [amount, setAmount] = useState(0);
   const navigate = useNavigate();
   const [balance, setBalance] = useState(0);
-  const link = "http://localhost:8001/api/selectuser"
+  const link = "http://localhost:8001/api/selectuser";
 
   useEffect(() => {
     fetch(`${link}/${accno}`)
@@ -41,7 +41,6 @@ export default function Withdraw({ accno }) {
 
     if (amt > bal) {
       alert("Insufficient balance. Please enter a smaller amount");
-      navigate('/');
       return;
     }
 
@@ -54,16 +53,13 @@ export default function Withdraw({ accno }) {
       alert("Please enter a valid amount (no decimals)");
       return;
     }
-    if (amt%10 !=0){
+    if (amt % 10 !== 0) {
       alert("Enter a round figure value");
       return;
     }
 
-
     handleWithdraw(event);
   };
-
-
 
   const handleWithdraw = (event) => {
     event.preventDefault();
@@ -90,6 +86,10 @@ export default function Withdraw({ accno }) {
     navigate('/');
   };
 
+  const handleHome = () => {
+    navigate("/");
+  };
+
   return (
     <div
       className="flex flex-col items-center justify-center h-screen"
@@ -112,14 +112,14 @@ export default function Withdraw({ accno }) {
           style={{
             borderRadius: "15px",
             boxShadow: "0px 0px 20px 3px rgb(136 136 136 / 29%)",
-            border: "2px dotted #D89216",
+            border: "2px dotted #6a5acd", // Change border color to shady blue
             padding: "20px",
           }}
         >
           <h1 className="text-4xl text-white mb-3 font-bold ">
             Welcome to Withdrawal Screen
           </h1>
-          <h2 className="text-2xl mb-5" style={{ color: "#D89216" }}>
+          <h2 className="text-2xl mb-5" style={{ color: "#6a5acd" }}>
             Enter the Amount
           </h2>
           <input
@@ -130,13 +130,37 @@ export default function Withdraw({ accno }) {
             className="border border-gray-300 rounded px-3 py-2 mb-4"
             placeholder="Enter the amount"
           />
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
-            onClick={handlewithdrawvalidate}
-          >
-            Submit
-          </button>
+          <div className="flex space-x-4">
+            <button
+              type="submit"
+              className="text-lg font-bold"
+              style={{
+                color: "#fff",
+                backgroundColor: "#6a5acd", // Shady blue color
+                border: "2px solid #6a5acd",
+                borderRadius: "25px",
+                padding: "10px 20px", // Add padding for consistency
+                margin: "0", // Remove any margin
+              }}
+              onClick={handlewithdrawvalidate}
+            >
+              Submit
+            </button>
+            <button
+              className="text-lg font-bold"
+              style={{
+                color: "#6a5acd", // Shady blue color
+                border: "2px solid #6a5acd",
+                borderRadius: "25px",
+                backgroundColor: "transparent", // Ensure background is transparent
+                padding: "10px 20px", // Add padding for consistency
+                margin: "0", // Remove any margin
+              }}
+              onClick={handleHome}
+            >
+              Home
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -144,6 +168,6 @@ export default function Withdraw({ accno }) {
 }
 
 Withdraw.propTypes = {
-  accno: PropTypes.string.isRequired
+  accno: PropTypes.string.isRequired,
 };
 

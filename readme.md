@@ -97,9 +97,9 @@ Before running the application, make sure you have the following software instal
 
             
             INSERT INTO Card (cardno, accno, acctype, name_card, pin, bankname, expiredate, cvv, balance) VALUES
-                (11112222, 123456, 'Savings', 'John Doe', '1234', 'KCT Bank', '2025-12-31', 123, 1000.00),
-                (22223333, 234567, 'Checking', 'Jane Smith', '5678', 'KCT Bank', '2026-11-30', 456, 2000.00),
-                (33334444, 345678, 'Savings', 'Alice Johnson', '9012', 'KCT Bank', '2027-10-31', 789, 3000.00);
+                (11112222, 123456, 'Savings', 'John Doe', '1234', 'XYZ Bank', '2025-12-31', 123, 1000.00),
+                (22223333, 234567, 'Checking', 'Jane Smith', '5678', 'XYZ Bank', '2026-11-30', 456, 2000.00),
+                (33334444, 345678, 'Savings', 'Alice Johnson', '9012', 'XYZ Bank', '2027-10-31', 789, 3000.00);
             
 
             INSERT INTO Transaction (cardno, transtype, amt, date, time) VALUES
